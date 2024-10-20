@@ -24,7 +24,7 @@ cart.forEach((cartItem) => {
 
   const deliveryOptionId = cartItem.deliveryOptionsId;
   
-  let deliveryOption;
+  let deliveryOption = '';
 
   deliveryOptions.forEach((option) => {
     if (option.id === deliveryOptionId) {
@@ -94,7 +94,8 @@ function deliveryOptionsHTML(matchingItem, cartItem) {
 
     const isChecked = deliveryOption.id === cartItem.deliveryOptionsId;
 
-    html += `<div class="delivery-option js-delivery-option">
+    html += `<div class="delivery-option js-delivery-option" data-product-id = "${matchingItem.id}"
+    data-delivery-option-id = "${deliveryOption.id}">
         <input type="radio"
           ${isChecked ? 'checked' : ''}
           class="delivery-option-input"
@@ -166,6 +167,7 @@ function saveQuantityLink(productId) {
 
 document.querySelectorAll('.js-delivery-option').forEach((element) => {
   element.addEventListener('click', () => {
-    updateDeliveryOption(productId, )
+    const {productId, deliveryOptionId} = element.dataset;
+    updateDeliveryOption(productId, deliveryOptionId);
   });
 });
