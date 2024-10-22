@@ -155,5 +155,5 @@ function deliveryOptionsHTML(matchingItem, cartItem) {
       renderOrderSummary();
       renderPaymentSummary();
     });
-  })
+  });
 };
