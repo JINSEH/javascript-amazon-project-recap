@@ -22,7 +22,7 @@ describe('test suite: addToCart', () => {
   });
 
   it('adds a new product to the cart', () => {
-    spyOn(localStorage, 'setItem');
+    spyOn(localStorage, 'setItem'); //We need this because in the addToCart function, we have saveToStorage function with setItem, we dont want our test code to affect our real code, hence we make a mock version of setItem as well.
     spyOn(localStorage, 'getItem').and.callFake(() => {
       return JSON.stringify([]);
     }); //spyOn is a function that is a part of jasmine, the first parameter is the object that we want to mock. The second parameter is the string that contains the method that we want to mock. 
