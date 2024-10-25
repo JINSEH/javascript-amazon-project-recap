@@ -39,6 +39,7 @@ class Clothing extends Products {
     this.sizeChartLink = productDetails.sizeChartLink;
   }
 
+
   extraInfoHTML() {
     return `
       <a href="${this.sizeChartLink}" target="_blank">
@@ -47,6 +48,31 @@ class Clothing extends Products {
     `;
   }
 }
+
+// const date = new Date();
+// console.log(date);
+// console.log(date.toLocaleTimeString());
+
+// const object2 = {
+//   a: 2,
+//   b: this.a
+// };
+
+
+// function logThis() {
+//   console.log(this);
+// }
+
+// logThis();
+// logThis.call('hello');
+
+// const object3 = {
+//   method : () => {
+//     console.log(this);
+//   }
+// };
+
+// object3.method();
 
 export const products = [
   {
