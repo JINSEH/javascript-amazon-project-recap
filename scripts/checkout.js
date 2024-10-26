@@ -6,22 +6,37 @@ import { loadCart } from "../data/cart.js";
 // import '../data/backend-practice.js';
 // import '../data/car.js';
 
-Promise.all([
-  loadProductsFetch(),
-  new Promise((resolve) => {
-    loadProductsFetch(() => {
-      resolve('value1');
-    });
-  }),
-  new Promise((resolve) => {
+async function loadPage() {
+  await loadProductsFetch();
+
+  await new Promise((resolve) => {
     loadCart(() => {
       resolve();
     });
-  })
-]).then(() => {
+  });
+
   renderOrderSummary();
   renderPaymentSummary();
-});
+}
+
+loadPage();
+
+// Promise.all([
+//   loadProductsFetch(),
+//   new Promise((resolve) => {
+//     loadProductsFetch(() => {
+//       resolve('value1');
+//     });
+//   }),
+//   new Promise((resolve) => {
+//     loadCart(() => {
+//       resolve();
+//     });
+//   })
+// ]).then(() => {
+//   renderOrderSummary();
+//   renderPaymentSummary();
+// });
 
 // new Promise((resolve) => {
 //   loadProducts(() => {
